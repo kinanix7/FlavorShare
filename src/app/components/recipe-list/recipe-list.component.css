@@ -1,0 +1,22 @@
+.filters {
+    margin-bottom: 1rem;
+  }
+  
+  .btn-outline-primary {
+    background-color: transparent;
+  }
+  
+  .btn-outline-primary:hover {
+    color: white;
+  }
+  
+  .form-select {
+    max-width: 200px;
+  }
+  
+  @media (max-width: 768px) {
+    .form-select {
+      max-width: 100%;
+      margin-top: 0.5rem;
+    }
+  }

@@ -1,0 +1,89 @@
+<div class="container fade-in">
+    <div class="row mb-4">
+      <div class="col-12">
+        <h1 class="page-title">All Recipes</h1>
+      </div>
+    </div>
+
+    <div class="row mb-4">
+      <div class="col-md-8">
+        <div class="filters">
+          <div class="d-md-flex gap-2">
+            <button 
+              class="btn mb-2 mb-md-0"
+              [class.btn-primary]="activeFilter === 'all'"
+              [class.btn-outline-primary]="activeFilter !== 'all'"
+              (click)="filterRecipes('all')">
+              All
+            </button>
+            
+            <button 
+              class="btn mb-2 mb-md-0"
+              [class.btn-primary]="activeFilter === 'vegetarian'"
+              [class.btn-outline-primary]="activeFilter !== 'vegetarian'"
+              (click)="filterRecipes('vegetarian')">
+              Vegetarian
+            </button>
+            
+            <button 
+              class="btn mb-2 mb-md-0"
+              [class.btn-primary]="activeFilter === 'vegan'"
+              [class.btn-outline-primary]="activeFilter !== 'vegan'"
+              (click)="filterRecipes('vegan')">
+              Vegan
+            </button>
+            
+            <button 
+              class="btn mb-2 mb-md-0"
+              [class.btn-primary]="activeFilter === 'quick'"
+              [class.btn-outline-primary]="activeFilter !== 'quick'"
+              (click)="filterRecipes('quick')">
+              Quick Meals
+            </button>
+            
+            <select 
+              class="form-select" 
+              [(ngModel)]="categoryFilter" 
+              (change)="filterByCategory()">
+              <option value="">All Categories</option>
+              <option *ngFor="let category of categories" [value]="category">
+                {{ category }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-4 mt-3 mt-md-0">
+        <div class="d-flex">
+          <input 
+            type="text" 
+            class="form-control me-2" 
+            placeholder="Search recipes..."
+            [(ngModel)]="searchQuery"
+            (keyup.enter)="searchRecipes()">
+          <button class="btn btn-primary" (click)="searchRecipes()">Search</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div *ngIf="loading" class="col-12 text-center py-5">
+        <div class="loading-spinner"></div>
+      </div>
+
+      <div *ngIf="!loading && filteredRecipes.length === 0" class="col-12 text-center py-5">
+        <p>No recipes found matching your criteria.</p>
+      </div>
+      
+      <div *ngFor="let recipe of filteredRecipes" class="col-md-4 mb-4 slide-up">
+        <app-recipe-card [recipe]="recipe"></app-recipe-card>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-12 text-center">
+        <a routerLink="/recipes/new" class="btn btn-accent">Add New Recipe</a>
+      </div>
+    </div>
+  </div>

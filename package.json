@@ -1,0 +1,32 @@
+{
+  "name": "angular-recipe-app",
+  "private": true,
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "json-server": "json-server --watch db.json --port 3000",
+    "dev": "concurrently \"npm run start\" \"npm run json-server\""
+  },
+  "dependencies": {
+    "@angular/animations": "^19.2.0",
+    "@angular/common": "^19.2.0",
+    "@angular/compiler": "^19.2.0",
+    "@angular/core": "^19.2.0",
+    "@angular/forms": "^19.2.0",
+    "@angular/platform-browser": "^19.2.0",
+    "@angular/router": "^19.2.0",
+    "bootstrap": "^5.3.2",
+    "rxjs": "^7.8.1",
+    "tslib": "^2.5.0",
+    "zone.js": "~0.15.0"
+  },
+  "devDependencies": {
+    "@angular/build": "^19.2.0",
+    "@angular/cli": "^19.2.0",
+    "@angular/compiler-cli": "^19.2.0",
+    "concurrently": "^8.2.2",
+    "json-server": "^0.17.4",
+    "typescript": "^5.8.2"
+  }
+}

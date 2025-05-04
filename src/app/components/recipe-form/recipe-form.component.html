@@ -1,0 +1,248 @@
+<div class="container fade-in">
+    <div class="row mb-4">
+      <div class="col-12">
+        <h1 class="page-title">{{ isEditMode ? 'Edit' : 'Create' }} Recipe</h1>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-10 offset-md-1">
+        <div class="card">
+          <div class="card-body">
+            <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+              <!-- Basic Info -->
+              <h4 class="mb-3">Basic Information</h4>
+              <div class="row mb-4">
+                <div class="col-md-6 mb-3">
+                  <label for="name" class="form-label">Recipe Name*</label>
+                  <input 
+                    type="text" 
+                    id="name" 
+                    formControlName="name" 
+                    class="form-control"
+                    [class.is-invalid]="nameControl.invalid && nameControl.touched">
+                  <div *ngIf="nameControl.invalid && nameControl.touched" class="invalid-feedback">
+                    Recipe name is required
+                  </div>
+                </div>
+                
+                <div class="col-md-6 mb-3">
+                  <label for="category" class="form-label">Category*</label>
+                  <select 
+                    id="category" 
+                    formControlName="category" 
+                    class="form-select"
+                    [class.is-invalid]="categoryControl.invalid && categoryControl.touched">
+                    <option value="">Select a category</option>
+                    <option value="Breakfast">Breakfast</option>
+                    <option value="Lunch">Lunch</option>
+                    <option value="Dinner">Dinner</option>
+                    <option value="Dessert">Dessert</option>
+                    <option value="Appetizer">Appetizer</option>
+                    <option value="Snack">Snack</option>
+                    <option value="Beverage">Beverage</option>
+                    <option value="Italian">Italian</option>
+                    <option value="Asian">Asian</option>
+                    <option value="Mexican">Mexican</option>
+                    <option value="Mediterranean">Mediterranean</option>
+                    <option value="Indian">Indian</option>
+                  </select>
+                  <div *ngIf="categoryControl.invalid && categoryControl.touched" class="invalid-feedback">
+                    Category is required
+                  </div>
+                </div>
+                
+                <div class="col-12 mb-3">
+                  <label for="description" class="form-label">Description*</label>
+                  <textarea 
+                    id="description" 
+                    formControlName="description" 
+                    class="form-control" 
+                    rows="3"
+                    [class.is-invalid]="descriptionControl.invalid && descriptionControl.touched"></textarea>
+                  <div *ngIf="descriptionControl.invalid && descriptionControl.touched" class="invalid-feedback">
+                    Description is required (min 10 characters)
+                  </div>
+                </div>
+                
+                <div class="col-12 mb-3">
+                  <label for="imageUrl" class="form-label">Image URL*</label>
+                  <input 
+                    type="url" 
+                    id="imageUrl" 
+                    formControlName="imageUrl" 
+                    class="form-control"
+                    [class.is-invalid]="imageUrlControl.invalid && imageUrlControl.touched">
+                  <div *ngIf="imageUrlControl.invalid && imageUrlControl.touched" class="invalid-feedback">
+                    Valid image URL is required
+                  </div>
+                  <small class="form-text text-muted">Provide a URL to an image of your recipe</small>
+                </div>
+              </div>
+
+              <!-- Details -->
+              <h4 class="mb-3">Recipe Details</h4>
+              <div class="row mb-4">
+                <div class="col-md-4 mb-3">
+                  <label for="prepTime" class="form-label">Prep Time (minutes)*</label>
+                  <input 
+                    type="number" 
+                    id="prepTime" 
+                    formControlName="prepTime"
+                    min="1" 
+                    class="form-control"
+                    [class.is-invalid]="prepTimeControl.invalid && prepTimeControl.touched">
+                  <div *ngIf="prepTimeControl.invalid && prepTimeControl.touched" class="invalid-feedback">
+                    Valid prep time is required
+                  </div>
+                </div>
+                
+                <div class="col-md-4 mb-3">
+                  <label for="cookTime" class="form-label">Cook Time (minutes)*</label>
+                  <input 
+                    type="number" 
+                    id="cookTime" 
+                    formControlName="cookTime"
+                    min="0" 
+                    class="form-control"
+                    [class.is-invalid]="cookTimeControl.invalid && cookTimeControl.touched">
+                  <div *ngIf="cookTimeControl.invalid && cookTimeControl.touched" class="invalid-feedback">
+                    Valid cook time is required
+                  </div>
+                </div>
+                
+                <div class="col-md-4 mb-3">
+                  <label for="servings" class="form-label">Servings*</label>
+                  <input 
+                    type="number" 
+                    id="servings" 
+                    formControlName="servings"
+                    min="1" 
+                    class="form-control"
+                    [class.is-invalid]="servingsControl.invalid && servingsControl.touched">
+                  <div *ngIf="servingsControl.invalid && servingsControl.touched" class="invalid-feedback">
+                    Valid number of servings is required
+                  </div>
+                </div>
+                
+                <div class="col-md-6 mb-3">
+                  <label for="difficulty" class="form-label">Difficulty*</label>
+                  <select 
+                    id="difficulty" 
+                    formControlName="difficulty" 
+                    class="form-select"
+                    [class.is-invalid]="difficultyControl.invalid && difficultyControl.touched">
+                    <option value="">Select difficulty</option>
+                    <option value="Easy">Easy</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Hard">Hard</option>
+                  </select>
+                  <div *ngIf="difficultyControl.invalid && difficultyControl.touched" class="invalid-feedback">
+                    Difficulty is required
+                  </div>
+                </div>
+                
+                <div class="col-md-6 mb-3">
+                  <label class="form-label">Tags</label>
+                  <div class="d-flex flex-wrap gap-2">
+                    <div class="form-check form-check-inline" *ngFor="let tag of availableTags">
+                      <input 
+                        class="form-check-input" 
+                        type="checkbox" 
+                        [id]="'tag-' + tag"
+                        [value]="tag"
+                        (change)="onTagChange($event)">
+                      <label class="form-check-label" [for]="'tag-' + tag">{{ tag }}</label>
+                    </div>
+                  </div>
+                  <div class="mt-2" *ngIf="selectedTags.length > 0">
+                    <span>Selected: </span>
+                    <span *ngFor="let tag of selectedTags" class="tag">{{ tag }}</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Ingredients -->
+              <div class="row mb-4">
+                <div class="col-12">
+                  <h4 class="mb-3">Ingredients*</h4>
+                  
+                  <div formArrayName="ingredients">
+                    <div *ngFor="let ingredient of ingredientsArray.controls; let i = index" class="mb-2 d-flex">
+                      <input 
+                        type="text" 
+                        [formControlName]="i" 
+                        class="form-control"
+                        placeholder="e.g., 2 cups flour"
+                        [class.is-invalid]="ingredientsArray.controls[i].invalid && ingredientsArray.controls[i].touched">
+                      <button 
+                        type="button" 
+                        class="btn btn-outline-danger ms-2"
+                        (click)="removeIngredient(i)">
+                        ✕
+                      </button>
+                    </div>
+                    <div class="invalid-feedback" *ngIf="ingredientsArray.invalid && ingredientsArray.touched">
+                      At least one ingredient is required
+                    </div>
+                  </div>
+                  
+                  <button 
+                    type="button" 
+                    class="btn btn-outline-primary mt-2"
+                    (click)="addIngredient()">
+                    Add Ingredient
+                  </button>
+                </div>
+              </div>
+
+              <!-- Steps -->
+              <div class="row mb-4">
+                <div class="col-12">
+                  <h4 class="mb-3">Cooking Steps*</h4>
+                  
+                  <div formArrayName="steps">
+                    <div *ngFor="let step of stepsArray.controls; let i = index" class="mb-2 d-flex">
+                      <div class="step-number">{{ i + 1 }}.</div>
+                      <input 
+                        type="text" 
+                        [formControlName]="i" 
+                        class="form-control"
+                        placeholder="Describe this step"
+                        [class.is-invalid]="stepsArray.controls[i].invalid && stepsArray.controls[i].touched">
+                      <button 
+                        type="button" 
+                        class="btn btn-outline-danger ms-2"
+                        (click)="removeStep(i)">
+                        ✕
+                      </button>
+                    </div>
+                    <div class="invalid-feedback" *ngIf="stepsArray.invalid && stepsArray.touched">
+                      At least one step is required
+                    </div>
+                  </div>
+                  
+                  <button 
+                    type="button" 
+                    class="btn btn-outline-primary mt-2"
+                    (click)="addStep()">
+                    Add Step
+                  </button>
+                </div>
+              </div>
+
+              <div class="d-flex justify-content-between mt-4">
+                <a routerLink="/recipes" class="btn btn-outline-secondary">Cancel</a>
+                <button 
+                  type="submit" 
+                  class="btn btn-primary"
+                  [disabled]="recipeForm.invalid || submitting">
+                  {{ isEditMode ? 'Update' : 'Create' }} Recipe
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

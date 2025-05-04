@@ -1,0 +1,7 @@
+main {
+    min-height: calc(100vh - 140px);
+  }
+  
+  .footer {
+    margin-top: 3rem;
+  }

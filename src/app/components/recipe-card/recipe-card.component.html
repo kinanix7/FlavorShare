@@ -1,0 +1,27 @@
+<div class="card recipe-card h-100">
+    <img 
+      [src]="recipe.imageUrl" 
+      alt="{{ recipe.name }}" 
+      class="card-img-top"
+      (error)="onImageError($event)">
+      
+    <div class="card-body recipe-card-content">
+      <h5 class="card-title">{{ recipe.name }}</h5>
+      <p class="card-text text-muted mb-3">{{ recipe.description | slice:0:100 }}{{ recipe.description.length > 100 ? '...' : '' }}</p>
+      
+      <div class="d-flex align-items-center mb-2">
+        <span class="prep-time me-3">
+          <i class="bi bi-clock"></i> {{ recipe.prepTime + recipe.cookTime }} min
+        </span>
+        <span class="difficulty">
+          {{ recipe.difficulty }}
+        </span>
+      </div>
+      
+      <div class="tags-container mb-3">
+        <span *ngFor="let tag of recipe.tags | slice:0:3" class="tag">{{ tag }}</span>
+      </div>
+      
+      <a [routerLink]="['/recipes', recipe.id]" class="mt-auto btn btn-outline-primary">View Recipe</a>
+    </div>
+  </div>

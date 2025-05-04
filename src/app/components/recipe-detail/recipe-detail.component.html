@@ -1,0 +1,123 @@
+<div class="container fade-in" *ngIf="!loading && recipe">
+    <div class="row mb-4">
+      <div class="col-12">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+            <li class="breadcrumb-item"><a routerLink="/recipes">Recipes</a></li>
+            <li class="breadcrumb-item active">{{ recipe.name }}</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-4">
+        <img 
+          [src]="recipe.imageUrl" 
+          alt="{{ recipe.name }}" 
+          class="img-fluid rounded shadow recipe-image"
+          (error)="onImageError($event)">
+      </div>
+      
+      <div class="col-md-6 mb-4">
+        <h1 class="recipe-title">{{ recipe.name }}</h1>
+        
+        <div class="recipe-meta mb-3">
+          <span class="badge bg-light text-dark me-2">
+            <i class="bi bi-clock"></i> Prep: {{ recipe.prepTime }} min
+          </span>
+          <span class="badge bg-light text-dark me-2">
+            <i class="bi bi-fire"></i> Cook: {{ recipe.cookTime }} min
+          </span>
+          <span class="badge bg-light text-dark me-2">
+            <i class="bi bi-people"></i> Serves: {{ recipe.servings }}
+          </span>
+          <span class="badge bg-light text-dark">
+            <i class="bi bi-bar-chart"></i> {{ recipe.difficulty }}
+          </span>
+        </div>
+        
+        <div class="recipe-category mb-3">
+          <span class="badge bg-primary">{{ recipe.category }}</span>
+        </div>
+        
+        <div class="recipe-tags mb-3">
+          <span *ngFor="let tag of recipe.tags" class="tag me-1">{{ tag }}</span>
+        </div>
+        
+        <p class="recipe-description">{{ recipe.description }}</p>
+        
+        <div class="recipe-actions mt-4">
+          <a [routerLink]="['/recipes', recipe.id, 'edit']" class="btn btn-primary me-2">Edit Recipe</a>
+          <button (click)="showDeleteConfirmation = true" class="btn btn-danger">Delete Recipe</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Ingredients</h4>
+          </div>
+          <div class="card-body">
+            <ul class="ingredients-list">
+              <li *ngFor="let ingredient of recipe.ingredients">{{ ingredient }}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-8 mb-4">
+        <div class="card">
+          <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Instructions</h4>
+          </div>
+          <div class="card-body">
+            <ol class="instructions-list">
+              <li *ngFor="let step of recipe.steps">{{ step }}</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-12">
+        <h3>Ratings & Comments</h3>
+        <app-rating 
+          [recipeId]="recipeId" 
+          [existingRatings]="ratings">
+        </app-rating>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" *ngIf="loading">
+    <div class="row">
+      <div class="col-12 text-center py-5">
+        <div class="loading-spinner"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" *ngIf="!loading && !recipe">
+    <div class="row">
+      <div class="col-12 text-center py-5">
+        <h2>Recipe not found</h2>
+        <p>Sorry, we couldn't find the recipe you're looking for.</p>
+        <a routerLink="/recipes" class="btn btn-primary">Browse Recipes</a>
+      </div>
+    </div>
+  </div>
+  
+  <app-confirm-dialog
+    *ngIf="showDeleteConfirmation"
+    title="Delete Recipe"
+    message="Are you sure you want to delete this recipe? This action cannot be undone."
+    confirmText="Delete"
+    cancelText="Cancel"
+    (confirm)="deleteRecipe()"
+    (cancel)="showDeleteConfirmation = false">
+  </app-confirm-dialog>

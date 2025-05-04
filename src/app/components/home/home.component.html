@@ -1,0 +1,47 @@
+<div class="container fade-in">
+    <div class="row mb-4">
+      <div class="col-12 text-center">
+        <h1 class="display-4 page-title">Savor Every Bite</h1>
+        <p class="lead">Discover, create, and share amazing recipes from around the world</p>
+      </div>
+    </div>
+
+    <div class="row mb-5">
+      <div class="col-md-8 offset-md-2">
+        <div class="card mb-4 p-4 text-center">
+          <h2>Find your next favorite dish</h2>
+          <p>Browse our collection of delicious recipes or add your own creations</p>
+          <div class="d-flex justify-content-center gap-3">
+            <a routerLink="/recipes" class="btn btn-primary">Browse Recipes</a>
+            <a routerLink="/recipes/new" class="btn btn-accent">Add Recipe</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <h2 class="mb-4">Trending Recipes</h2>
+      </div>
+    </div>
+
+    <div class="row">
+      <div *ngIf="loading" class="col-12 text-center py-5">
+        <div class="loading-spinner"></div>
+      </div>
+
+      <div *ngIf="!loading && trendingRecipes.length === 0" class="col-12 text-center py-5">
+        <p>No recipes found. Start by adding your favorite recipe!</p>
+      </div>
+      
+      <div *ngFor="let recipe of trendingRecipes" class="col-md-4 mb-4">
+        <app-recipe-card [recipe]="recipe" class="slide-up"></app-recipe-card>
+      </div>
+    </div>
+
+    <div class="row mt-5">
+      <div class="col-12 text-center">
+        <a routerLink="/recipes" class="btn btn-lg btn-primary">View All Recipes</a>
+      </div>
+    </div>
+  </div>

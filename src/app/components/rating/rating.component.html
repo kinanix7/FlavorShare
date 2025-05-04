@@ -1,0 +1,80 @@
+<div class="rating-container">
+    <div class="rating-summary mb-4">
+      <div class="d-flex align-items-center mb-2">
+        <span class="h5 mb-0 me-2">Average Rating:</span>
+        <span class="rating">
+          <span *ngFor="let star of [1, 2, 3, 4, 5]">
+            <i 
+              class="bi"
+              [class.bi-star-fill]="star <= averageRating"
+              [class.bi-star]="star > averageRating"
+              [style.color]="star <= averageRating ? 'var(--accent-dark)' : 'var(--neutral-400)'">
+            </i>
+          </span>
+        </span>
+        <span class="ms-2 rating-text">{{ averageRatingText }}</span>
+      </div>
+      <p>{{ ratings.length }} {{ ratings.length === 1 ? 'review' : 'reviews' }}</p>
+    </div>
+
+    <div class="existing-ratings mb-4">
+      <div *ngIf="ratings.length === 0" class="text-center py-3 bg-light rounded">
+        <p class="mb-0">No reviews yet. Be the first to rate this recipe!</p>
+      </div>
+      
+      <div *ngFor="let rating of ratings" class="comment-card slide-up">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <div class="rating">
+            <span *ngFor="let star of [1, 2, 3, 4, 5]">
+              <i 
+                class="bi" 
+                [class.bi-star-fill]="star <= rating.rating"
+                [class.bi-star]="star > rating.rating"
+                [style.color]="star <= rating.rating ? 'var(--accent-dark)' : 'var(--neutral-400)'">
+              </i>
+            </span>
+          </div>
+          <span class="text-muted">{{ formatDate(rating.createdAt) }}</span>
+        </div>
+        <p class="comment-text mb-0">{{ rating.comment }}</p>
+      </div>
+    </div>
+
+    <div class="add-rating-form p-4 bg-light rounded">
+      <h4 class="mb-3">Add Your Review</h4>
+      
+      <div class="mb-3">
+        <label class="form-label">Your Rating:</label>
+        <div class="rating-select">
+          <span *ngFor="let star of [1, 2, 3, 4, 5]">
+            <i 
+              class="bi" 
+              [class.bi-star-fill]="star <= userRating"
+              [class.bi-star]="star > userRating"
+              [style.color]="star <= userRating ? 'var(--accent-dark)' : 'var(--neutral-600)'"
+              (mouseenter)="hoverRating = star"
+              (mouseleave)="hoverRating = 0"
+              (click)="setRating(star)">
+            </i>
+          </span>
+        </div>
+      </div>
+      
+      <div class="mb-3">
+        <label for="comment" class="form-label">Your Comment:</label>
+        <textarea 
+          id="comment" 
+          [(ngModel)]="userComment"
+          class="form-control" 
+          rows="3" 
+          placeholder="Share your experience with this recipe..."></textarea>
+      </div>
+      
+      <button 
+        (click)="submitRating()" 
+        class="btn btn-primary"
+        [disabled]="!canSubmit() || submitting">
+        Submit Review
+      </button>
+    </div>
+  </div>

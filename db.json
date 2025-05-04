@@ -1,0 +1,234 @@
+{
+  "recipes": [
+    {
+      "id": 1,
+      "name": "Classic Margherita Pizza",
+      "description": "A traditional Italian pizza with fresh ingredients",
+      "ingredients": [
+        "1 pizza dough",
+        "3 tbsp tomato sauce",
+        "150g fresh mozzarella",
+        "5-6 fresh basil leaves",
+        "2 tbsp olive oil",
+        "Salt and pepper to taste"
+      ],
+      "steps": [
+        "Preheat oven to 475°F (245°C)",
+        "Roll out the pizza dough on a floured surface",
+        "Spread tomato sauce evenly over the dough",
+        "Tear mozzarella into pieces and distribute over the sauce",
+        "Bake for 10-12 minutes until crust is golden",
+        "Remove from oven, top with fresh basil leaves",
+        "Drizzle with olive oil, season with salt and pepper"
+      ],
+      "prepTime": 15,
+      "cookTime": 12,
+      "servings": 2,
+      "difficulty": "Easy",
+      "imageUrl": "https://images.pexels.com/photos/4109111/pexels-photo-4109111.jpeg",
+      "category": "Italian",
+      "tags": [
+        "italian",
+        "dinner",
+        "vegetarian"
+      ],
+      "createdAt": "2023-11-20T10:30:00Z"
+    },
+    {
+      "id": 2,
+      "name": "Vegetable Stir Fry",
+      "description": "Quick and healthy vegetable stir fry with soy sauce",
+      "ingredients": [
+        "2 tbsp vegetable oil",
+        "2 cloves garlic, minced",
+        "1 inch ginger, grated",
+        "1 bell pepper, sliced",
+        "1 carrot, julienned",
+        "1 cup broccoli florets",
+        "1 cup snap peas",
+        "3 tbsp soy sauce",
+        "1 tbsp sesame oil",
+        "2 green onions, chopped"
+      ],
+      "steps": [
+        "Heat oil in a wok or large pan over high heat",
+        "Add garlic and ginger, stir for 30 seconds until fragrant",
+        "Add vegetables and stir fry for 3-4 minutes until crisp-tender",
+        "Add soy sauce and sesame oil, toss to combine",
+        "Garnish with green onions and serve hot"
+      ],
+      "prepTime": 10,
+      "cookTime": 5,
+      "servings": 2,
+      "difficulty": "Easy",
+      "imageUrl": "https://images.pexels.com/photos/1640773/pexels-photo-1640773.jpeg",
+      "category": "Asian",
+      "tags": [
+        "asian",
+        "quick",
+        "vegetarian",
+        "vegan",
+        "healthy"
+      ],
+      "createdAt": "2023-11-21T18:45:00Z"
+    },
+    {
+      "id": 3,
+      "name": "Classic Chocolate Chip Cookies",
+      "description": "Everyone's favorite chewy chocolate chip cookies",
+      "ingredients": [
+        "1 cup butter, softened",
+        "1 cup white sugar",
+        "1 cup packed brown sugar",
+        "2 eggs",
+        "2 tsp vanilla extract",
+        "3 cups all-purpose flour",
+        "1 tsp baking soda",
+        "2 tsp hot water",
+        "1/2 tsp salt",
+        "2 cups semisweet chocolate chips"
+      ],
+      "steps": [
+        "Preheat oven to 350°F (175°C)",
+        "Cream together butter and sugars until smooth",
+        "Beat in eggs one at a time, then stir in vanilla",
+        "Dissolve baking soda in hot water, add to batter with salt",
+        "Stir in flour and chocolate chips",
+        "Drop by large spoonfuls onto ungreased pans",
+        "Bake for about 10 minutes or until edges are nicely browned"
+      ],
+      "prepTime": 15,
+      "cookTime": 10,
+      "servings": 24,
+      "difficulty": "Medium",
+      "imageUrl": "https://images.pexels.com/photos/230325/pexels-photo-230325.jpeg",
+      "category": "Dessert",
+      "tags": [
+        "dessert",
+        "baking",
+        "cookies",
+        "vegetarian"
+      ],
+      "createdAt": "2023-11-22T14:20:00Z"
+    },
+    {
+      "name": "Kylee Alston",
+      "description": "Ad iure et quia sint",
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqnb9lfVWLVQsv4rewdqk_dgp2vT2iU76qyA&s",
+      "category": "Snack",
+      "prepTime": 27,
+      "cookTime": 7,
+      "servings": 87,
+      "difficulty": "Easy",
+      "ingredients": [
+        "Nisi labore placeat"
+      ],
+      "steps": [
+        "Reprehenderit laboru"
+      ],
+      "tags": [
+        "vegan",
+        "gluten-free",
+        "paleo",
+        "quick",
+        "easy",
+        "breakfast",
+        "lunch",
+        "dessert",
+        "mexican",
+        "asian",
+        "indian"
+      ],
+      "createdAt": "2025-05-04T22:09:01.135Z",
+      "id": 4
+    },
+    {
+      "name": "Wanda Hodge",
+      "description": "Rerum id qui qui al",
+      "imageUrl": "https://www.vyhy.org.au",
+      "category": "Mediterranean",
+      "prepTime": 96,
+      "cookTime": 70,
+      "servings": 18,
+      "difficulty": "Easy",
+      "ingredients": [
+        "Omnis sed architecto"
+      ],
+      "steps": [
+        "Quia molestiae nihil"
+      ],
+      "tags": [
+        "vegetarian",
+        "easy",
+        "dinner",
+        "dessert",
+        "asian",
+        "vegan",
+        "dairy-free",
+        "quick",
+        "lunch",
+        "mexican",
+        "indian"
+      ],
+      "createdAt": "2025-05-04T22:28:26.639Z",
+      "id": 6
+    },
+    {
+      "name": "Daria Zamora",
+      "description": "Delectus iusto nobi",
+      "imageUrl": "https://www.zaf.com",
+      "category": "Asian",
+      "prepTime": 88,
+      "cookTime": 55,
+      "servings": 51,
+      "difficulty": "Medium",
+      "ingredients": [
+        "Sint quisquam tempo",
+        "Asperiores reiciendi"
+      ],
+      "steps": [
+        "Commodo et iure dolo",
+        "Quos ipsa quia libe"
+      ],
+      "tags": [
+        "vegetarian",
+        "vegan",
+        "gluten-free",
+        "keto",
+        "quick",
+        "dessert",
+        "italian",
+        "mexican",
+        "asian"
+      ],
+      "createdAt": "2025-05-04T22:31:51.967Z",
+      "id": 7
+    }
+  ],
+  "ratings": [
+    {
+      "id": 1,
+      "recipeId": 1,
+      "userId": "user1",
+      "rating": 5,
+      "comment": "Perfect pizza recipe! The crust came out so crispy.",
+      "createdAt": "2023-11-25T09:15:00Z"
+    },
+    {
+      "id": 2,
+      "recipeId": 1,
+      "userId": "user2",
+      "rating": 4,
+      "comment": "Delicious, but I added some red pepper flakes for extra flavor.",
+      "createdAt": "2023-11-26T16:30:00Z"
+    },
+    {
+      "id": 3,
+      "recipeId": 2,
+      "userId": "user3",
+      "rating": 5,
+      "comment": "So quick and healthy! I added tofu for extra protein.",
+      "createdAt": "2023-11-27T12:45:00Z"
+    }
+  ]
+}

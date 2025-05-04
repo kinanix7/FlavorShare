@@ -1,0 +1,31 @@
+.recipe-image {
+    max-height: 400px;
+    width: 100%;
+    object-fit: cover;
+  }
+  
+  .recipe-title {
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  
+  .recipe-meta {
+    margin-bottom: 1rem;
+  }
+  
+  .recipe-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+  
+  .ingredients-list, .instructions-list {
+    padding-left: 1.2rem;
+  }
+  
+  .ingredients-list li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .instructions-list li {
+    margin-bottom: 1rem;
+  }
