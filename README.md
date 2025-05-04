@@ -35,17 +35,6 @@ A modern, responsive web application built with **Angular** for browsing, filter
 
 ```
 
-src/
-├── app/
-│   ├── navbar/
-│   ├── home/
-│   ├── recipe-list/
-│   ├── recipe-detail/
-│   ├── rating-system/
-│   └── services/
-│       ├── recipe.service.ts
-│       └── rating.service.ts
-
 ````
 
 ---
